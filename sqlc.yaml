@@ -1,0 +1,9 @@
+version: "2"
+sql:
+  - schema: "db/migrations" # Combined schema file for sqlc
+    queries: "db/queries/"
+    engine: "postgresql"
+    gen:
+      go:
+        package: "db"
+        out: "internal/db"
