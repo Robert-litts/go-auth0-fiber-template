@@ -1,4 +1,4 @@
-# Auth0 Fiber Login Template
+# Go Fiber Auth0 Single sign-on Login Template
 
 A simple and secure authentication template using Auth0 with Go Fiber framework. This template demonstrates how to implement Auth0 authentication in a Go web application with Fiber, including user management with PostgreSQL. This is an extremely brief template for learning purposes and provides no functionality beyond simple login. This code was modified from the [original Gin template](https://github.com/auth0-samples/auth0-golang-web-app/tree/master/01-Login) provided by Auth0.
 
@@ -46,7 +46,7 @@ A simple and secure authentication template using Auth0 with Go Fiber framework.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/robert-litts/auth0-fiber-template.git
+   git clone https://github.com/robert-litts/go-auth0-fiber-template.git
    cd auth0-fiber-template
    ```
 
@@ -125,14 +125,6 @@ The included Dockerfile creates a production-ready image:
 ```bash
 docker build -t auth0-fiber-app .
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
