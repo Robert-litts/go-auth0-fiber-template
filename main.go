@@ -6,6 +6,7 @@ import (
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/joho/godotenv"
 
+	"01-Login/internal/db"
 	"01-Login/platform/authenticator"
 	"01-Login/platform/router"
 )
@@ -23,7 +24,7 @@ func main() {
 	}
 
 	// Initialize database connection
-	dbConn := router.ConnectDB()
+	dbConn := db.ConnectDB()
 	if dbConn == nil {
 		log.Fatalf("Failed to initialize database connection")
 	}

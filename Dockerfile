@@ -1,4 +1,4 @@
-FROM golang:1.19.3-alpine3.17
+FROM golang:1.23.3-alpine3.19
 
 # Define current working directory
 WORKDIR /01-Login

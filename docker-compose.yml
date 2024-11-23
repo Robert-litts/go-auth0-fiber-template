@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env 
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres/postgres:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s  # Check every 10 seconds
+      timeout: 5s    # Timeout after 5 seconds
+      retries: 5     # Retry up to 5 times
+
+  webapp:
+    build:
+      context: .  # Build from the current directory
+      dockerfile: Dockerfile  # Specify the Dockerfile
+    ports:
+      - "3000:3000"  # Map port 3000 on the host to port 3000 in the container
+    env_file:
+      - .env  # Load environment variables from .env file
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy  # Wait for db to be healthy
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8090:8080"  # Map port 8090 on the host to port 8080 in the container
+    depends_on:
+      db:
+        condition: service_healthy  # Wait for db to be healthy
+
+  migrations:
+    image: ghcr.io/kukymbr/goose-docker:3.22.1
+    env_file:
+      - .env  # Load environment variables from .env file
+    volumes:
+      - ./db/migrations:/migrations
+    depends_on:
+      db:
+        condition: service_healthy  # Wait for db to be healthy
