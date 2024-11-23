@@ -1,3 +1,5 @@
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+
 # Go Fiber Auth0 Single sign-on Login Template
 
 A simple and secure authentication template using Auth0 with Go Fiber framework. This template demonstrates how to implement Auth0 authentication in a Go web application with Fiber, including user management with PostgreSQL. This is an extremely brief template for learning purposes and provides no functionality beyond simple login. This code was modified from the [original Gin template](https://github.com/auth0-samples/auth0-golang-web-app/tree/master/01-Login) provided by Auth0.
